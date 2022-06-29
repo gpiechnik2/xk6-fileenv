@@ -46,11 +46,7 @@ func get_file_content(path string) []string {
 func set_variables(path string) {
 	lines := get_file_content(path)
 	for i := 0; i <= len(lines)-1; i++ {
-		log.Printf("dsa d: %v", i)
-
 		line := lines[i]
-		log.Printf(line)
-
 		parts := strings.SplitN(line, "=", 2)
 		if len(parts[0]) != 0 {
 			if len(parts[1]) == 0 {
