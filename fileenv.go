@@ -34,12 +34,12 @@ func exists(path string) (bool, error) {
 }
 
 func get_file_content(path string) []string {
-	log.Printf(":))))))))))")
+	log.Printf(":))))))d)))")
 	pwd, _ := os.Getwd()
 	log.Printf(pwd)
 	log.Printf(path)
 
-	bytesRead, _ := ioutil.ReadFile(pwd + path)
+	bytesRead, _ := ioutil.ReadFile(pwd + "/" + path)
 	file_content := string(bytesRead)
 	log.Printf(file_content)
 
