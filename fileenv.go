@@ -49,12 +49,12 @@ func set_variables(path string) {
 		line := lines[i]
 		parts := strings.SplitN(line, "=", 2)
 		if len(parts[0]) == 0 || len(parts[1]) == 0 {
-			log.Fatalf("An error occured while setting environment variables %v. Check that each line is in the KEY=VALUE convention.", err)
+			log.Fatalf("An error occured while setting environment variables. Check that each line is in the KEY=VALUE convention.")
 		}
 
 		err := os.Setenv(parts[0], parts[1])
 		if err != nil {
-			log.Fatalf("An error occured while setting environment variables %v. Check that each line is in the KEY=VALUE convention.", err)
+			log.Fatalf("An error occured while setting environment variables. Check that each line is in the KEY=VALUE convention. %v", err)
 		}
 	}
 }
@@ -72,9 +72,9 @@ func load_env_file() {
 
 		if !if_exists {
 			log.Fatalf("The specified path to the environment variables file does not exist. The name of the environment variables file: %v. Remember that the path MUST be relative.", env_file_path)
-
 			return
 		}
+
 		if if_exists {
 			log.Printf("The name of the environment variables file path: %v.", env_file_path)
 			set_variables(env_file_path)
