@@ -62,7 +62,6 @@ func load_env_file() {
 
 	// if env file specified
 	if env_file_path != "" {
-		log.Printf("xddddddddddddddddd")
 		if_exists, err := exists(env_file_path)
 		if err != nil {
 			log.Fatalf("An error occurred while checking for a file with environment variables %v. Remember that the path MUST be relative.", err)
@@ -70,12 +69,12 @@ func load_env_file() {
 		}
 
 		if !if_exists {
-			log.Fatalf("The specified path to the environment variables file does not exist.")
+			log.Fatalf("The specified path to the environment variables file does not exist. The name of the environment variables file: %v. Remember that the path MUST be relative.", env_file_path)
 			return
 		}
 
 		if if_exists {
-			log.Printf("The name of the environment variables file path: %v. Remember that the path MUST be relative.", env_file_path)
+			log.Printf("The name of the environment variables file path: %v.", env_file_path)
 			set_variables(env_file_path)
 			return
 		}
