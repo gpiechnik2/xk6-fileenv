@@ -34,6 +34,7 @@ func exists(path string) (bool, error) {
 }
 
 func get_file_content(path string) []string {
+	log.Printf(":))))))))))")
 	pwd, _ := os.Getwd()
 	log.Printf(pwd)
 	log.Printf(path)
