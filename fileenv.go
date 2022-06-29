@@ -43,13 +43,15 @@ func get_file_content(path string) []string {
 
 func set_variables(path string) {
 	lines := get_file_content(path)
-
-	for i := 1; i <= 5; i++ {
+	for i := 1; i <= len(lines); i++ {
 		line := lines[i]
+		log.Printf(line)
+
 		parts := strings.SplitN(line, "=", 2)
-		err := os.Setenv(parts[0], parts[1])
 		log.Printf(parts[0])
 		log.Printf(parts[1])
+
+		err := os.Setenv(parts[0], parts[1])
 
 		if err != nil {
 			log.Fatalf("An error occured while setting environment variables %v. Check that each line is in the KEY=VALUE convention.", err)
