@@ -49,6 +49,10 @@ func set_variables(path string) {
 		line := lines[i]
 		parts := strings.SplitN(line, "=", 2)
 		err := os.Setenv(parts[0], parts[1])
+		log.Printf(parts[0])
+		log.Printf(parts[1])
+		log.Printf(line)
+
 		if err != nil {
 			log.Fatalf("An error occured while setting environment variables %v. Check that each line is in the KEY=VALUE convention.", err)
 		}
@@ -57,6 +61,9 @@ func set_variables(path string) {
 
 func load_env_file() {
 	env_file_path := os.Getenv(env_var)
+
+	log.Printf(env_file_path)
+	log.Printf(env_var)
 
 	// if env file specified
 	if env_file_path != "" {
