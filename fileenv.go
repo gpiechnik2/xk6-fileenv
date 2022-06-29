@@ -1,7 +1,6 @@
 package fileenv
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -51,7 +50,6 @@ func set_variables(path string) {
 		err := os.Setenv(parts[0], parts[1])
 		log.Printf(parts[0])
 		log.Printf(parts[1])
-		log.Printf(line)
 
 		if err != nil {
 			log.Fatalf("An error occured while setting environment variables %v. Check that each line is in the KEY=VALUE convention.", err)
@@ -61,25 +59,25 @@ func set_variables(path string) {
 
 func load_env_file() {
 	env_file_path := os.Getenv(env_var)
-	env_file_paths := os.Getenv("K6_FILE_ENV")
-	log.Println(env_file_paths)
-
-	log.Printf(env_file_path)
-	log.Printf(env_var)
 
 	// if env file specified
 	if env_file_path != "" {
+		log.Printf("xddddddddddddddddd")
 		if_exists, err := exists(env_file_path)
 		if err != nil {
 			log.Fatalf("An error occurred while checking for a file with environment variables %v. Remember that the path MUST be relative.", err)
+			return
 		}
 
-		if if_exists != false {
-			fmt.Errorf("The specified path to the environment variables file does not exist.")
+		if !if_exists {
+			log.Fatalf("The specified path to the environment variables file does not exist.")
+			return
 		}
 
-		if if_exists != true {
-			fmt.Printf("The name of the environment variables file path: %v. Remember that the path MUST be relative.", env_file_path)
+		if if_exists {
+			log.Printf("The name of the environment variables file path: %v. Remember that the path MUST be relative.", env_file_path)
+			set_variables(env_file_path)
+			return
 		}
 	}
 }
