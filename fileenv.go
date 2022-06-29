@@ -61,6 +61,8 @@ func set_variables(path string) {
 
 func load_env_file() {
 	env_file_path := os.Getenv(env_var)
+	env_file_paths := os.Getenv("K6_FILE_ENV")
+	log.Println(env_file_paths)
 
 	log.Printf(env_file_path)
 	log.Printf(env_var)
