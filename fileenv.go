@@ -35,14 +35,20 @@ func exists(path string) (bool, error) {
 
 func get_file_content(path string) []string {
 	pwd, _ := os.Getwd()
+	log.Printf(pwd)
+	log.Printf(path)
+
 	bytesRead, _ := ioutil.ReadFile(pwd + path)
 	file_content := string(bytesRead)
+	log.Printf(file_content)
+
 	lines := strings.Split(file_content, "\n")
 	return lines
 }
 
 func set_variables(path string) {
 	lines := get_file_content(path)
+	log.Printf(lines[0])
 	for i := 1; i <= len(lines); i++ {
 		line := lines[i]
 		log.Printf(line)
