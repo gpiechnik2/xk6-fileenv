@@ -39,7 +39,7 @@ func get_file_content(path string) []string {
 	pwd, _ := os.Getwd()
 	bytesRead, _ := ioutil.ReadFile(pwd + "/" + path)
 	file_content := string(bytesRead)
-	lines := strings.Split(file_content, "\n")
+	lines := strings.Split(strings.ReplaceAll(file_content, "\r\n", "\n"), "\n")
 	return lines
 }
 
