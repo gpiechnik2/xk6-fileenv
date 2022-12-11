@@ -1,6 +1,6 @@
 module github.com/gpiechnik2/xk6-fileenv
 
-go 1.18
+go 1.17
 
 require go.k6.io/k6 v0.38.3
 
